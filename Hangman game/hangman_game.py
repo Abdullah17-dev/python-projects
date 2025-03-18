@@ -35,7 +35,7 @@ class Hangman:
         print("Welcome to Hangman Game!")
         while not self.is_won() and not self.is_lost():
             self.display()
-            letter = input("Guess a letter or (quitt): ").strip().lower()
+            letter = input("Guess a letter or (quit): ").strip().lower()
             if letter == "quit":
                 print("Thanks for playing")
                 break
