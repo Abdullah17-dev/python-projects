@@ -2,7 +2,7 @@ import random
 class Hangman:
     def __init__(self,words):
         self.words = words
-        self.word = random.choice(self.words)
+        self.word = random.choice(self.words).upper()
         self.word_display = ["_" if letter.isalpha() else letter for letter in self.word]
         self.guessed_letters = set()
         self.attempts = 10
@@ -35,8 +35,9 @@ class Hangman:
         print("Welcome to Hangman Game!")
         while not self.is_won() and not self.is_lost():
             self.display()
-            letter = input("Guess a letter or (Q): ").strip().upper()
-            if letter == "Q":
+            letter = input("Guess a letter or (quitt): ").strip().lower()
+            if letter == "quit":
+                print("Thanks for playing")
                 break
             if len(letter) == 1 and letter.isalpha():
                 self.guess(letter)
