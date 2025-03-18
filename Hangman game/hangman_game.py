@@ -18,7 +18,7 @@ class Hangman:
             return
         self.guessed_letters.add(letter)
         if letter in self.word:
-            for idx, char in self.word:
+            for idx, char in enumerate(self.word):
                 if char == letter:
                     self.word_display[idx] = letter
         else:
@@ -35,7 +35,9 @@ class Hangman:
         print("Welcome to Hangman Game!")
         while not self.is_won() and not self.is_lost():
             self.display()
-            letter = input("Guess a letter: ")
+            letter = input("Guess a letter or (Q): ").strip().upper()
+            if letter == "Q":
+                break
             if len(letter) == 1 and letter.isalpha():
                 self.guess(letter)
             else:
@@ -45,3 +47,6 @@ class Hangman:
 
         else:
             print(f"Game over! The word was: {self.word}")
+words_list = ["python","java","hangman","rubby","sql","pygame"]
+game = Hangman(words_list)
+game.play()
